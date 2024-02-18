@@ -1,4 +1,4 @@
-# Comparison of PSO implementations in Rust and Zig
+## Comparison of PSO implementations in Rust and Zig
 This project contains two implementations of the Particle Swarm Optimization (PSO) algorithm in Rust and Zig programming languages.
 
 The goal of the project is to compare the experience of developing the same algorithm in two different languages, as well as test the performance of the implementations.
@@ -10,7 +10,6 @@ To run the Rust version:
 $ cd rust
 $ cargo r -r
 ```
-
 
 To run the Zig version:
 ```bash
