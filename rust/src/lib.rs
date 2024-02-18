@@ -42,7 +42,7 @@ impl<const DIMS: usize> Default for Params<DIMS> {
     }
 }
 
-type DefaultRng = random::RomuDuoJr;
+type DefaultRng = random::RomuTrio;
 
 pub struct PSO<const DIMS: usize> {
     params: Params<DIMS>,
