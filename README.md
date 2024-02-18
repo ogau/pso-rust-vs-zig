@@ -11,7 +11,6 @@ $ cd rust
 $ cargo r -r
 ```
 
-
 To run the Zig version:
 ```bash
 $ cd zig
