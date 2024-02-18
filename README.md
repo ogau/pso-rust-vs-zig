@@ -8,7 +8,7 @@ To run the Rust version:
 
 ```bash
 $ cd rust
-$ cargo run
+$ cargo r -r
 ```
 
 
