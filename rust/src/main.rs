@@ -1,5 +1,5 @@
-use std::time::Instant;
 use pso::{Params, Range, PSO};
+use std::time::Instant;
 
 fn dixonprice(x: &[f64]) -> f64 {
     let pow2 = |x| x * x;

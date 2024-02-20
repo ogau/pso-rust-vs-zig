@@ -1,7 +1,8 @@
-use dense::Dense;
+use crate::dense::Dense;
 use rand::{Rng, RngCore, SeedableRng};
 use rand_distr::StandardNormal;
 
+mod dense;
 mod random;
 
 #[derive(Clone, Copy)]
@@ -42,7 +43,7 @@ impl<const DIMS: usize> Default for Params<DIMS> {
     }
 }
 
-type DefaultRng = random::RomuDuoJr;
+type DefaultRng = random::RomuTrio;
 
 pub struct PSO<const DIMS: usize> {
     params: Params<DIMS>,
