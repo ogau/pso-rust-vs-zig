@@ -1,16 +1,16 @@
 #[derive(Debug, Clone)]
-pub struct Dense<T> {
+pub struct DenseMatrix<T> {
     data: Box<[T]>,
     shape: Shape,
 }
 
-impl<T: Default> Dense<T> {
+impl<T: Default> DenseMatrix<T> {
     pub fn new(rows: usize, cols: usize) -> Self {
         Self::new_with(rows, cols, || T::default())
     }
 }
 
-impl<T> Dense<T> {
+impl<T> DenseMatrix<T> {
     pub fn data_mut(&mut self) -> &mut [T] {
         &mut self.data
     }
@@ -68,7 +68,7 @@ impl Shape {
 }
 
 pub struct IterRows<'a, T> {
-    data: &'a Dense<T>,
+    data: &'a DenseMatrix<T>,
     cursor: usize,
 }
 

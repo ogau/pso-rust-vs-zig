@@ -1,8 +1,8 @@
-use crate::dense::Dense;
+use crate::dense_matrix::DenseMatrix;
 use rand::{Rng, RngCore, SeedableRng};
 use rand_distr::StandardNormal;
 
-mod dense;
+mod dense_matrix;
 mod random;
 
 #[derive(Clone, Copy)]
@@ -43,13 +43,13 @@ impl<const DIMS: usize> Default for Params<DIMS> {
     }
 }
 
-type DefaultRng = random::RomuTrio;
+type DefaultRng = random::RomuDuoJr;
 
 pub struct PSO<const DIMS: usize> {
     params: Params<DIMS>,
-    positions: Dense<f64>,
-    velocities: Dense<f64>,
-    best_positions: Dense<f64>,
+    positions: DenseMatrix<f64>,
+    velocities: DenseMatrix<f64>,
+    best_positions: DenseMatrix<f64>,
     best_objectives: Box<[f64]>,
     rng: DefaultRng,
 }
@@ -65,8 +65,8 @@ impl<const DIMS: usize> PSO<DIMS> {
 
         let mut rng = DefaultRng::from_entropy();
 
-        let mut velocities = Dense::new(n_particles, DIMS);
-        let mut positions = Dense::new(n_particles, DIMS);
+        let mut velocities = DenseMatrix::new(n_particles, DIMS);
+        let mut positions = DenseMatrix::new(n_particles, DIMS);
 
         let best_objectives = (0..n_particles).map(|_| f64::INFINITY).collect();
 
@@ -93,7 +93,7 @@ impl<const DIMS: usize> PSO<DIMS> {
         }
     }
 
-    pub fn ask(&self) -> dense::IterRows<'_, f64> {
+    pub fn ask(&self) -> dense_matrix::IterRows<'_, f64> {
         self.positions.iter_rows()
     }
 

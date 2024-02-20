@@ -54,7 +54,7 @@ mod romu_duo_jr {
 }
 pub use romu_trio::*;
 mod romu_trio {
-    use rand_core::{RngCore, SeedableRng};
+    use rand_core::{le::read_u64_into, RngCore, SeedableRng};
 
     const NUM_FIELDS: usize = 3;
     type T = u64;
@@ -103,8 +103,9 @@ mod romu_trio {
 
         #[inline]
         fn from_seed(seed: Self::Seed) -> Self {
-            let [x, y, z] = unsafe { std::mem::transmute::<Self::Seed, [T; NUM_FIELDS]>(seed) };
-
+            let mut dst = [0; NUM_FIELDS];
+            read_u64_into(&seed, &mut dst);
+            let [x, y, z] = dst;
             Self {
                 x_state: x,
                 y_state: y,
